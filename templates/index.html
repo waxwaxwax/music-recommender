@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mitsuhiro's Portfolio</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- h1の中にロゴを入れる -->
+        <h1 class="title">
+            <img src="static/assets/profile-pic.png" alt="logo" class="logo">
+            Mitsuhiro's 音楽レコメンドアプリ
+        </h1>
+
+        <!-- フォーム部分 -->
+        <div class="form-section">
+            <form id="recommendForm">
+                <label for="mood">気分:</label>
+                <select id="mood" name="mood">
+                    <option value="" selected disabled>選択してください</option>
+                    <option value="😀">😀</option>
+                    <option value="😢">😢</option>
+                    <option value="😎">😎</option>
+                    <option value="😡">😡</option>
+                    <option value="😍">😍</option>
+                </select>
+
+                <label for="genre">ジャンル:</label>
+                <select id="genre" name="genre">
+                    <option value="" selected disabled>選択してください</option>
+                    <option value="hiphop">HipHop</option>
+                    <option value="house">House</option>
+                    <option value="techno">Techno</option>
+                    <option value="punk">Punk</option>
+                    <option value="rock">Rock</option>
+                    <option value="piano">Piano</option>
+                    <option value="j-pop">J-pop</option>
+                    <option value="k-pop">K-pop</option>
+                    <option value="pop">Pop</option>
+                    <option value="latin">Latin</option>
+                </select>
+
+                <label for="era">年代:</label>
+                <select id="era" name="era">
+                    <option value="" selected disabled>選択してください</option>
+                    <option value="2020年代">2020年代</option>
+                    <option value="2010年代">2010年代</option>
+                    <option value="2000年代">2000年代</option>
+                    <option value="1990年代">1990年代</option>
+                    <option value="1980年代">1980年代</option>
+                    <option value="1970年代">1970年代</option>
+                    <option value="1960年代">1960年代</option>
+                    <option value="1950年代">1950年代</option>
+                </select>
+                <br>
+                <button type="submit">おすすめを取得</button>
+            </form>
+        </div>
+
+        <!-- 結果表示部分 -->
+        <div class="result-section">
+            <div id="loading" class="loading-spinner" style="display:none;"></div>
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
