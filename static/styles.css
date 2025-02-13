@@ -1,7 +1,7 @@
 /* ベース設定 */
 body {
     margin: 0;
-    padding: 0;
+    padding: 100px;
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
     text-align: center;
@@ -31,13 +31,25 @@ body {
 }
 
 /* フォームと結果表示のボックス */
-.form-section,
-.result-section {
+.form-section {
     background-color: #fff;
     padding: 20px;
     margin-bottom: 20px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
     box-sizing: border-box;
+}
+
+.result-section{
+    background-color: #fff;
+    box-sizing: border-box;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.result-section h2 {
+    padding-top: 20px;
+}
+.result-section pre {
+    background-color: #fff;
+    padding-bottom: 20px;
 }
 
 /* フォーム内のラベルとセレクト */
@@ -76,6 +88,7 @@ button:hover {
     white-space: pre-wrap;
     overflow-wrap: anywhere;
     word-break: break-all;
+    height: 100%;
     width: 100%;
     box-sizing: border-box;
 }
