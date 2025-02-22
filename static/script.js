@@ -5,7 +5,7 @@ document.getElementById('recommendForm').addEventListener('submit', async functi
     document.getElementById('loading').style.display = 'block';
     document.getElementById('result').innerHTML = '';
 
-    const mood = document.getElementById('mood').value;
+    const mood = document.getElementById('situation').value;
     const genre = document.getElementById('genre').value;
     const era = document.getElementById('era').value;
     

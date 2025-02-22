@@ -18,16 +18,18 @@
         <!-- フォーム部分 -->
         <div class="form-section">
             <form id="recommendForm">
-                <label for="mood">気分:</label>
-                <select id="mood" name="mood">
+                <!-- シチュエーションの選択 -->
+                <label for="situation">シチュエーション:</label>
+                <select id="situation" name="situation">
                     <option value="" selected disabled>選択してください</option>
-                    <option value="楽しい">😀 楽しい</option>
-                    <option value="悲しい">😢 悲しい</option>
-                    <option value="クール">😎 クール</option>
-                    <option value="怒り">😡 激おこ</option>
-                    <option value="ラブ">😍 ラブ</option>
+                    <option value="リラックス">☕ リラックス</option>
+                    <option value="集中">📖 集中</option>
+                    <option value="ドライブ">🚗 ドライブ</option>
+                    <option value="パーティー">🎉 パーティー</option>
+                    <option value="夜に聴きたい">🌙 夜に聴きたい</option>
                 </select>
 
+                <!-- ジャンルの選択 -->
                 <label for="genre">ジャンル:</label>
                 <select id="genre" name="genre">
                     <option value="" selected disabled>選択してください</option>
@@ -39,9 +41,10 @@
                     <option value="piano">Piano</option>
                     <option value="jazz">Jazz</option>
                     <option value="blues">Blues</option>
-                    <option value="raggae">Raggae</option>
+                    <option value="raggae">Reggae</option>
                 </select>
 
+                <!-- 年代の選択 -->
                 <label for="era">年代:</label>
                 <select id="era" name="era">
                     <option value="" selected disabled>選択してください</option>
