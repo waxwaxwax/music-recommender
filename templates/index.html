@@ -1,72 +1,91 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Recommender</title>
-    <link rel="icon" type="image/png" href="static/assets/profile-pic.png" />
     <link rel="stylesheet" href="static/styles.css">
+    <script defer src="static/script.js"></script>
 </head>
+
 <body>
     <div class="container">
-        <!-- h1の中にロゴを入れる -->
-        <h1 class="title">
-            <img src="static/assets/profile-pic.png" alt="logo" class="logo">
-            Mitsuhiro's 音楽レコメンドアプリ
-        </h1>
+        <!-- ナビゲーションバー -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <img class="nav-logo" src="static/assets/profile-pic.png" alt="logo">
+                <a href="/" class="logo">Mitsuhiro's Music</a>
 
-        <!-- フォーム部分 -->
-        <div class="form-section">
-            <form id="recommendForm">
-                <!-- シチュエーションの選択 -->
-                <label for="situation">シチュエーション:</label>
-                <select id="situation" name="situation">
-                    <option value="" selected disabled>選択してください</option>
-                    <option value="リラックス">☕ リラックス</option>
-                    <option value="集中">📖 集中</option>
-                    <option value="ドライブ">🚗 ドライブ</option>
-                    <option value="パーティー">🎉 パーティー</option>
-                    <option value="夜に聴きたい">🌙 夜に聴きたい</option>
-                </select>
+                <!-- ハンバーガーメニュー -->
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar">ホーム</span>
+                    <span class="bar">履歴</span>
+                    <span class="bar">サインアウト</span>
+                </div>
 
-                <!-- ジャンルの選択 -->
-                <label for="genre">ジャンル:</label>
-                <select id="genre" name="genre">
-                    <option value="" selected disabled>選択してください</option>
-                    <option value="pop">Pop</option>
-                    <option value="hiphop">HipHop</option>
-                    <option value="latin">Latin</option>
-                    <option value="punk">Punk</option>
-                    <option value="rock">Rock</option>
-                    <option value="piano">Piano</option>
-                    <option value="jazz">Jazz</option>
-                    <option value="blues">Blues</option>
-                    <option value="raggae">Reggae</option>
-                </select>
+                <!-- メニュー -->
+                <ul class="nav-menu">
+                    <li><a href="/">ホーム</a></li>
+                    <li><a href="/about">履歴</a></li>
+                    <li><a href="/logout" class="logout-btn">ログアウト</a></li> <!-- ✅ 変更 -->
+                </ul>
+            </div>
+        </nav>
+        <!-- メインコンテンツ -->
+        <div class="main">
+            <h2>Mitsuhiro's 音楽レコメンドアプリ</h2>
+            <p>あなたにぴったりの音楽をおすすめします！</p>
 
-                <!-- 年代の選択 -->
-                <label for="era">年代:</label>
-                <select id="era" name="era">
-                    <option value="" selected disabled>選択してください</option>
-                    <option value="2020年代">2020年代</option>
-                    <option value="2010年代">2010年代</option>
-                    <option value="2000年代">2000年代</option>
-                    <option value="1990年代">1990年代</option>
-                    <option value="1980年代">1980年代</option>
-                    <option value="1970年代">1970年代</option>
-                </select>
-                <br>
-                <button type="submit">おすすめを取得</button>
-            </form>
-        </div>
+            <!-- フォーム -->
+            <div class="form-section">
+                <form id="recommendForm">
+                    <label for="situation">シチュエーション:</label>
+                    <select id="situation" name="situation" required>
+                        <option value="" selected disabled>選択してください</option>
+                        <option value="リラックス">☕ リラックス</option>
+                        <option value="集中">📖 集中</option>
+                        <option value="ドライブ">🚗 ドライブ</option>
+                        <option value="パーティー">🎉 パーティー</option>
+                        <option value="夜に聴きたい">🌙 夜に聴きたい</option>
+                    </select>
 
-        <!-- 結果表示部分 -->
-        <div class="result-section">
-            <div id="loading" class="loading-spinner" style="display:none;"></div>
-            <div id="result"></div>
+                    <label for="genre">ジャンル:</label>
+                    <select id="genre" name="genre" required>
+                        <option value="" selected disabled>選択してください</option>
+                        <option value="pop">Pop</option>
+                        <option value="hiphop">HipHop</option>
+                        <option value="latin">Latin</option>
+                        <option value="punk">Punk</option>
+                        <option value="rock">Rock</option>
+                        <option value="piano">Piano</option>
+                        <option value="jazz">Jazz</option>
+                        <option value="blues">Blues</option>
+                        <option value="reggae">Reggae</option>
+                    </select>
+
+                    <label for="era">年代:</label>
+                    <select id="era" name="era" required>
+                        <option value="" selected disabled>選択してください</option>
+                        <option value="2020年代">2020年代</option>
+                        <option value="2010年代">2010年代</option>
+                        <option value="2000年代">2000年代</option>
+                        <option value="1990年代">1990年代</option>
+                        <option value="1980年代">1980年代</option>
+                        <option value="1970年代">1970年代</option>
+                    </select>
+
+                    <button type="submit">おすすめを取得</button>
+                </form>
+            </div>
+
+            <!-- 結果表示 -->
+            <div class="result-section">
+                <div id="loading" class="loading-spinner" style="display:none;"></div>
+                <div id="result"></div>
+            </div>
         </div>
     </div>
-
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
+
 </html>

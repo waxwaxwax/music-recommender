@@ -5,7 +5,7 @@ document.getElementById('recommendForm').addEventListener('submit', async functi
     document.getElementById('loading').style.display = 'block';
     document.getElementById('result').innerHTML = '';
 
-    const mood = document.getElementById('situation').value;
+    const situation = document.getElementById('situation').value;
     const genre = document.getElementById('genre').value;
     const era = document.getElementById('era').value;
     
@@ -15,7 +15,7 @@ document.getElementById('recommendForm').addEventListener('submit', async functi
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ mood, genre, era })
+            body: JSON.stringify({ situation, genre, era })
         });
         
         const result = await response.json();
