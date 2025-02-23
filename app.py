@@ -10,7 +10,7 @@ from urllib3.util.retry import Retry
 load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = os.getenv("FLASK_SECRET_KEY", "your_secret_key")  # セッション管理用
+app.secret_key = os.getenv("FLASK_SECRET_KEY")  # セッション管理用
 
 # ログの設定（INFOレベル以上を出力）
 logging.basicConfig(level=logging.INFO)
@@ -140,4 +140,5 @@ def logout():
     return redirect(azure_logout_url)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=8000, debug=True)
+
