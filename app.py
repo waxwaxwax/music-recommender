@@ -1,17 +1,15 @@
 import os
 import logging
 import requests
-from flask import Flask, request, jsonify, render_template, session
+from flask import Flask, request, jsonify, render_template
 from dotenv import load_dotenv
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
-from auth import auth_bp  # 認証処理をインポート
 
 # .envファイルから環境変数を読み込み
 load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = os.getenv("FLASK_SECRET_KEY")  # セッション管理用
 
 # ログの設定
 logging.basicConfig(level=logging.INFO)
@@ -48,13 +46,10 @@ def get_session_with_retries(retries=3, backoff_factor=1.0, status_forcelist=(50
 # リトライ機能付きセッション（タイムアウトは30秒）
 azure_session = get_session_with_retries()
 
-# 認証用のBlueprintを登録
-app.register_blueprint(auth_bp)
-
 @app.route("/")
 def index():
     """メインページ"""
-    return render_template("index.html", user=session.get("user"))
+    return render_template("index.html")
 
 @app.route("/recommend", methods=["POST"])
 def recommend():
@@ -88,14 +83,14 @@ def recommend():
 作詞・作曲:
 <作詞作曲者>
 
-🎵 説明 🎵:
+🎵説明🎵:
 楽曲の特徴、背景、雰囲気などを簡潔に記述してください。15文字程度で改行し、視認性を高めてください。
 
-🔥 おすすめ理由 🔥:
+🔥おすすめ理由🔥:
 なぜこの曲が {situation} に適しているのかを説明してください。
 
-👇 おすすめ曲のYouTube 👇
-<リンク>
+👇おすすめ曲のYouTube👇
+<a href='<リンク>' target='_blank'>YouTubeで聴く</a>
 """
 
     payload = {
